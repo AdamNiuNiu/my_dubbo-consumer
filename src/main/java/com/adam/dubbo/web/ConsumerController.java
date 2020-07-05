@@ -15,7 +15,11 @@ import java.util.List;
 @Slf4j
 public class ConsumerController {
 
+    //check默认=true，启动时会检查引用的服务是否已存在，不存在时报错
+    //使用注册中心连接方式
     @Reference(check = false,version = "1.0.0",loadbalance = "roundrobin")
+    //直连方式
+//    @Reference(url = "dubbo://localhost:20880",version = "1.0.0")
     private UserService userService;
 
     @RequestMapping(value = "/getProviderUserInfo",method = RequestMethod.POST)
